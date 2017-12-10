@@ -15,13 +15,13 @@ paginate = 5
 [params]
 	showglobe = true
 
-	favicon = "https://github.com/thiagosantos18/acude-velho/public/favicon.ico"
+	favicon = "public/favicon.ico"
 
 	analytics = "code-here"
 
 	email = "thiago.moura@ccc.ufcg.edu.br"
 
-	profilepic = "https://github.com/thiagosantos18/acude-velho/public/img/profile.png"
+	profilepic = "public/img/profile.png"
 
 	title = "Thiago Moura"
 	subtitle = "Site Hugo - Visualizações do Açude Velho"
