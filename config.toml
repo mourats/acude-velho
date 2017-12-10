@@ -1,0 +1,36 @@
+baseURL = "https://thiagosantos18.github.io/acude-velho/"
+languageCode = "en-us"
+title = "My New Hugo Site"
+theme = "hugo-geo"
+publishDir = "docs"
+draft = "false"
+
+disqusShortname = "shortcode-here"
+paginate = 5
+
+[taxonomies]
+	tag = "tags"
+	tutorial = "tutorials"
+
+[params]
+	showglobe = true
+
+	favicon = "https://github.com/thiagosantos18/acude-velho/public/favicon.ico"
+
+	analytics = "code-here"
+
+	email = "thiago.moura@ccc.ufcg.edu.br"
+
+	profilepic = "https://github.com/thiagosantos18/acude-velho/public/img/profile.png"
+
+	title = "Thiago Moura"
+	subtitle = "Site Hugo - Visualizações do Açude Velho"
+
+	# Social buttons for sidebar
+	# Each of these are optional
+	[[params.socialbuttons]]
+	faicon = "github"
+	url = "https://github.com/thiagosantos18"
+	[[params.socialbuttons]]
+	faicon = "linkedin"
+	url = "https://www.linkedin.com/in/thiago-santos-425357148/"
