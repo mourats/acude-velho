@@ -113,7 +113,6 @@
     <div class="col-md-4 mychart" id="burrinhos">
     <h3>Burrinhos do açude</h3>
     </div>
-    <h5>Não sei porque o dominio do x não está indo até o máximo dos burrinhos</h5>
   </div>
 
   <style>
@@ -147,7 +146,7 @@
 
       var y = d3.scaleBand()
                 .domain(dados_bobs.map((d, i) => d.horario_inicial))
-                .rangeRound([0, alturaVis])
+                .range([0, alturaVis])
                 .paddingInner(0.25); // Configure essa escala com domain, range e padding OK
 
       // :)

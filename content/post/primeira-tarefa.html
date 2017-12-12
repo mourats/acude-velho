@@ -58,7 +58,7 @@ draft: false
 
       var y = d3.scaleBand()
                 .domain(dados_bobs.map((d, i) => d.horario_inicial))
-                .rangeRound([0, alturaVis])
+                .range([0, alturaVis])
                 .paddingInner(0.25); // Configure essa escala com domain, range e padding OK
 
       // :)
