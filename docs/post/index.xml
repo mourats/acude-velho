@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Thiago Moura</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 09 Dec 2017 21:03:53 -0300</lastBuildDate>
+    <lastBuildDate>Sat, 09 Dec 2017 21:04:00 -0300</lastBuildDate>
     
 	<atom:link href="https://thiagosantos18.github.io/acude-velho/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Comparação de movimentação entre os veículos motorizados durante todo o dia.</title>
+      <link>https://thiagosantos18.github.io/acude-velho/post/terceira-tarefa/</link>
+      <pubDate>Sat, 09 Dec 2017 21:04:00 -0300</pubDate>
+      
+      <guid>https://thiagosantos18.github.io/acude-velho/post/terceira-tarefa/</guid>
+      <description>Terceira Tarefa     Legenda    .carros { stroke: steelblue; stroke-width: 3; } .motos { stroke: goldenrod; stroke-width: 3; } .onibus { stroke: red; stroke-width: 3; } .caminhoes { stroke: black; stroke-width: 3; } .mychart text { font: 10px sans-serif; text-anchor: left; }  &#34;use strict&#34; function desenhaLinhas(dados) { var horario_unitario = dados.filter((d) = d.local === &#34;bobs&#34;); // definicoes de altura e largura do svg e da vis dentro var alturaSVG = 500, larguraSVG = 1000; var	margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico larguraVis = larguraSVG - margin.</description>
+    </item>
     
     <item>
       <title>Comparação de genêro com os pedrestre e ciclistas que passaram pelo Bob&#39;s, Jackson do Pandeiro e os Burrinhos durante todo dia.</title>
@@ -21,7 +30,7 @@
     </item>
     
     <item>
-      <title>Comparação dos veículos motorizados que passaram pelo Bob&#39;s, Jackson do Pandeiro e os Burrinhos</title>
+      <title>Comparação dos veículos motorizados que passaram pelo Bob&#39;s, Jackson do Pandeiro e os Burrinhos.</title>
       <link>https://thiagosantos18.github.io/acude-velho/post/primeira-tarefa/</link>
       <pubDate>Sat, 09 Dec 2017 20:08:20 -0300</pubDate>
       
