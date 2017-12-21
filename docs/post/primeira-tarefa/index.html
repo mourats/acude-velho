@@ -303,13 +303,11 @@
         .attr("transform", "translate(0," + alturaVis + ")")
         .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
 
-
-        grafico_burrinhos.selectAll("rect").on("mouseover", mouseDentro);
+    grafico_burrinhos.selectAll("rect").on("mouseover", mouseDentro);
                function mouseDentro(d){
-                 console.log(d);
                  d3.select("#tooltip") // reparou que tem uma div escondida no html?
-                   .style("left", (d3.event.pageX) + "px")
-                   .style("top", d3.event.pageY + "px")
+                   .style("left", ((d3.event.pageX)-600) + "px")
+                   .style("top", (d3.event.pageY) + "px")
                    .select("#value")
                    .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
                  // Mostra o tooltip
