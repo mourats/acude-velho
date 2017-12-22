@@ -17,7 +17,8 @@
       <pubDate>Sat, 09 Dec 2017 21:04:00 -0300</pubDate>
       
       <guid>https://thiagosantos18.github.io/acude-velho/post/terceira-tarefa/</guid>
-      <description>Quarta Tarefa   Grafico  Legenda   Bob&#39;s Jackson Burrinhos   .carros { stroke: steelblue; stroke-width: 3; } .motos { stroke: goldenrod; stroke-width: 3; } .onibus { stroke: red; stroke-width: 3; } .caminhoes { stroke: black; stroke-width: 3; } .mychart text { font: 10px sans-serif; text-anchor: left; }  &#34;use strict&#34; function start(dados){ function desenhaLinhas() { d3.select(&#34;svg&#34;).remove(); var horario_unitario = dados.filter((d) = d.local === &#34;bobs&#34;); // definicoes de altura e largura do svg e da vis dentro var alturaSVG = 500, larguraSVG = 1000; var	margin = {top: 10, right: 20, bottom:30, left: 45}, // para descolar a vis das bordas do grafico larguraVis = larguraSVG - margin.</description>
+      <description>Quarta Tarefa   Grafico  Legenda   Veja a comparação em lugares separados com o checkbox abaixo!
+Bob&#39;s Jackson Burrinhos   .carros { stroke: steelblue; stroke-width: 3; } .motos { stroke: goldenrod; stroke-width: 3; } .onibus { stroke: red; stroke-width: 3; } .caminhoes { stroke: black; stroke-width: 3; } .mychart text { font: 10px sans-serif; text-anchor: left; }  &#34;use strict&#34; function start(dados){ function desenhaLinhas() { d3.</description>
     </item>
     
     <item>
