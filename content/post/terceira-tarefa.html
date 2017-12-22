@@ -3,24 +3,29 @@ title: "Comparação de movimentação entre os veículos motorizados durante to
 date: 2017-12-09T21:04:00-03:00
 draft: false
 ---
-
-<html lang="pt-br">
-
 <head>
   <meta charset="utf-8">
-  <title>Terceira Tarefa</title>
+  <title>Quarta Tarefa</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
-<body>
+
   <div class="row container">
     <div class="col-md-10 mychart" id="grafico">
+    <h3>Grafico</h3>
     </div>
     <div class="col-md-2 mychart" id="legenda">
-    <h3 style="text-align:center;">Legenda</h3>
-    </div>
+      <h3 style="text-align:center;">Legenda</h3>
   </div>
+
+  </div>
+
+<div align='center' id="checks">
+  <input type="checkbox" id="check_bobs" checked> Bob's <br>
+  <input type="checkbox" id="check_jackson" checked> Jackson <br>
+  <input type="checkbox" id="check_burrinhos" checked> Burrinhos <br>
+</div>
 
   <style>
     .carros {
@@ -50,8 +55,10 @@ draft: false
   <script type="text/javascript">
     "use strict"
 
-    function desenhaLinhas(dados) {
+function start(dados){
 
+    function desenhaLinhas() {
+      d3.select("svg").remove();
 
       var horario_unitario = dados.filter((d) =>  d.local === "bobs");
 
@@ -81,6 +88,7 @@ draft: false
           atualMaior > better? better = atualMaior : 0;
         }
         return better;
+
       }
 
       console.log(pontoMaximo())
@@ -96,15 +104,31 @@ draft: false
          .append('g') // para entender o <g> vá em x03-detalhes-svg.html
          .attr('transform', 'translate(' +  margin.left + ',' + margin.top + ')');
 
+      function dadosSelecionado(){
+            var selecionados = [];
+            if(d3.select("#check_bobs").property("checked")){
+            selecionados = selecionados.concat(dados.filter((d) =>  d.local === "bobs"));
+            }
+            if(d3.select("#check_jackson").property("checked")){
+            selecionados = selecionados.concat(dados.filter((d) =>  d.local === "jackson"));
+            }
+
+            if(d3.select("#check_burrinhos").property("checked")){
+            selecionados = selecionados.concat(dados.filter((d) =>  d.local === "burrinhos"));
+            }
+
+          return selecionados;
+      }
+      console.log(dadosSelecionado());
 
      grafico.selectAll('g')
          .data(horario_unitario.filter((d, i) => i+1 < horario_unitario.length? d: 0))
          .enter()
          .append('line')
          .attr('x1', d => x(d.horario_inicial))
-         .attr('y1', d => y(dados.filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.carros), 0)))
+         .attr('y1', d => y(dadosSelecionado().filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.carros), 0)))
          .attr('x2', (d, i) => i+1 < horario_unitario.length? x(horario_unitario[i+1].horario_inicial): 0)
-         .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dados.filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.carros), 0)): 0)
+         .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dadosSelecionado().filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.carros), 0)): 0)
          .attr('class', 'carros');
 
 
@@ -113,9 +137,9 @@ draft: false
           .enter()
           .append('line')
           .attr('x1', d => x(d.horario_inicial))
-          .attr('y1', d => y(dados.filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.motos), 0)))
+          .attr('y1', d => y(dadosSelecionado().filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.motos), 0)))
           .attr('x2', (d, i) => i+1 < horario_unitario.length? x(horario_unitario[i+1].horario_inicial): 0)
-          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dados.filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.motos), 0)): 0)
+          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dadosSelecionado().filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.motos), 0)): 0)
           .attr('class', 'motos');
 
 
@@ -124,9 +148,9 @@ draft: false
           .enter()
           .append('line')
           .attr('x1', d => x(d.horario_inicial))
-          .attr('y1', d => y(dados.filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.onibus), 0)))
+          .attr('y1', d => y(dadosSelecionado().filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.onibus), 0)))
           .attr('x2', (d, i) => i+1 < horario_unitario.length? x(horario_unitario[i+1].horario_inicial): 0)
-          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dados.filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.onibus), 0)): 0)
+          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dadosSelecionado().filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.onibus), 0)): 0)
           .attr('class', 'onibus');
 
 
@@ -135,9 +159,9 @@ draft: false
           .enter()
           .append('line')
           .attr('x1', d => x(d.horario_inicial))
-          .attr('y1', d => y(dados.filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.caminhoes), 0)))
+          .attr('y1', d => y(dadosSelecionado().filter((k) => k.horario_inicial === d.horario_inicial).reduce((a, e) => a+ parseInt(e.caminhoes), 0)))
           .attr('x2', (d, i) => i+1 < horario_unitario.length? x(horario_unitario[i+1].horario_inicial): 0)
-          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dados.filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.caminhoes), 0)): 0)
+          .attr('y2', (d, i) => i+1 < horario_unitario.length? y(dadosSelecionado().filter((k) => k.horario_inicial === horario_unitario[i+1].horario_inicial).reduce((a, e) => a+ parseInt(e.caminhoes), 0)): 0)
           .attr('class', 'caminhoes');
 
       grafico.append('g')
@@ -149,30 +173,33 @@ draft: false
          .attr("transform", "translate(0," + alturaVis + ")" )
          .call(d3.axisBottom(x).tickValues(horario_unitario.map((d, i) => d.horario_inicial).reduce((a , e, i) => { if(i%2 === 0){ return a.concat(e);} return a;}, [])));
 
-         var legenda = d3.select('#legenda')
-                 .append('svg')
-                 .attr('width', 200)
-                 .attr('height', 200)
-                 .attr('transform', 'translate(0,0)');
-
-         legenda.append('line').attr('x1', 50).attr('y1', 30).attr('x2', 80).attr('y2', 30).attr('class', 'carros');
-         legenda.append('g').attr('transform', 'translate(90,34)').append('text').text('Carros');
-         legenda.append('line').attr('x1', 50).attr('y1', 60).attr('x2', 80).attr('y2', 60).attr('class', 'motos');
-         legenda.append('g').attr('transform', 'translate(90,65)').append('text').text('Motos');
-         legenda.append('line').attr('x1', 50).attr('y1', 90).attr('x2', 80).attr('y2', 90).attr('class', 'onibus');
-         legenda.append('g').attr('transform', 'translate(90,96)').append('text').text('Ônibus');
-         legenda.append('line').attr('x1', 50).attr('y1', 120).attr('x2', 80).attr('y2', 120).attr('class', 'caminhoes');
-         legenda.append('g').attr('transform', 'translate(90,125)').append('text').text('Caminhões');
-
+         d3.select("#check_bobs").on("change", desenhaLinhas);
+         d3.select("#check_jackson").on("change", desenhaLinhas);
+         d3.select("#check_burrinhos").on("change", desenhaLinhas);
 
 
     }
 
+    desenhaLinhas();
+
+    var legenda = d3.select('#legenda')
+            .append('svg')
+            .attr('width', 200)
+            .attr('height', 200)
+            .attr('transform', 'translate(0,0)');
+
+    legenda.append('line').attr('x1', 50).attr('y1', 30).attr('x2', 80).attr('y2', 30).attr('class', 'carros');
+    legenda.append('g').attr('transform', 'translate(90,34)').append('text').text('Carros');
+    legenda.append('line').attr('x1', 50).attr('y1', 60).attr('x2', 80).attr('y2', 60).attr('class', 'motos');
+    legenda.append('g').attr('transform', 'translate(90,65)').append('text').text('Motos');
+    legenda.append('line').attr('x1', 50).attr('y1', 90).attr('x2', 80).attr('y2', 90).attr('class', 'onibus');
+    legenda.append('g').attr('transform', 'translate(90,96)').append('text').text('Ônibus');
+    legenda.append('line').attr('x1', 50).attr('y1', 120).attr('x2', 80).attr('y2', 120).attr('class', 'caminhoes');
+    legenda.append('g').attr('transform', 'translate(90,125)').append('text').text('Caminhões');
+  }
+
     d3.csv('https://raw.githubusercontent.com/thiagosantos18/intro-d3/master/dados/dados.csv', function(dados) {
-      desenhaLinhas(dados);
+      start(dados);
     });
 
   </script>
-</body>
-
-</html>

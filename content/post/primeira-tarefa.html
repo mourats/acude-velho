@@ -4,17 +4,15 @@ date: 2017-12-09T20:08:20-03:00
 draft: false
 ---
 
-
-<html lang="pt-br">
-
 <head>
   <meta charset="utf-8">
   <title>Primeira Tarefa</title>
   <script src="https://d3js.org/d3.v4.min.js"></script>
+  <script src="https://d3js.org/d3-selection-multi.v0.4.min.js"></script>
+  <script src='https://npmcdn.com/babel-core@5.8.34/browser.min.js'></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 </head>
 
-<body>
   <div class="row container">
     <div class="col-md-4 mychart" id="bobs">
       <h3><b>Bob's</b></h3>
@@ -29,6 +27,11 @@ draft: false
     <div id="tooltip" class="hidden">
        <p><b id="value">0</b></p>
     </div>
+
+    <div id="tooltip2" class="hidden">
+       <p><b id="value">0</b></p>
+    </div>
+
     <h5 style='font-style:italic;'>Passe o mouse nas barras e veja suas quantidades!</h5>
   </div>
 
@@ -139,25 +142,10 @@ draft: false
               .attr("transform", "translate(0," + alturaVis + ")")
               .call(d3.axisBottom(x));
 
+
        grafico_bobs.selectAll("rect").on("mouseover", mouseDentro);
-              function mouseDentro(d){
-                d3.select("#tooltip") // reparou que tem uma div escondida no html?
-                  .style("left", (d3.event.pageX) + "px")
-                  .style("top", d3.event.pageY + "px")
-                  .select("#value")
-                  .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
-                // Mostra o tooltip
-                d3.select("#tooltip").classed("hidden", false);
-              }
-
        grafico_bobs.selectAll("rect").on("mouseout", mouseSaiu);
-              function mouseSaiu(d){
-                d3.selectAll("text")
-                  .style("font-weight", "normal");
 
-                // não precisamos mais de tooltip
-                d3.select("#tooltip").classed("hidden", true);
-        }
 
        grafico_jackson.selectAll('rect')
               .data(dados_jackson)
@@ -178,24 +166,7 @@ draft: false
                 .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
 
       grafico_jackson.selectAll("rect").on("mouseover", mouseDentro);
-              function mouseDentro(d){
-                  d3.select("#tooltip") // reparou que tem uma div escondida no html?
-                  .style("left", (d3.event.pageX) + "px")
-                  .style("top", d3.event.pageY + "px")
-                  .select("#value")
-                  .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
-                  // Mostra o tooltip
-                  d3.select("#tooltip").classed("hidden", false);
-                  }
-
       grafico_jackson.selectAll("rect").on("mouseout", mouseSaiu);
-             function mouseSaiu(d){
-                  d3.selectAll("text")
-                  .style("font-weight", "normal");
-                  // não precisamos mais de tooltip
-                  d3.select("#tooltip").classed("hidden", true);
-              }
-
 
       grafico_burrinhos.selectAll('rect')
                 .data(dados_burrinhos)
@@ -216,24 +187,40 @@ draft: false
         .call(d3.axisBottom(x)); // magica do d3: gera eixo a partir da escala
 
     grafico_burrinhos.selectAll("rect").on("mouseover", mouseDentro);
-               function mouseDentro(d){
-                 d3.select("#tooltip") // reparou que tem uma div escondida no html?
-                   .style("left", ((d3.event.pageX)-600) + "px")
-                   .style("top", (d3.event.pageY) + "px")
-                   .select("#value")
-                   .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
-                 // Mostra o tooltip
-                 d3.select("#tooltip").classed("hidden", false);
-               }
+    grafico_burrinhos.selectAll("rect").on("mouseout", mouseSaiu);
+    grafico_burrinhos.selectAll("rect").on("click", mouseClicou);
 
-        grafico_burrinhos.selectAll("rect").on("mouseout", mouseSaiu);
-               function mouseSaiu(d){
-                 d3.selectAll("text")
-                   .style("font-weight", "normal");
 
-                 // não precisamos mais de tooltip
-                 d3.select("#tooltip").classed("hidden", true);
+    function mouseDentro(d){
+           d3.select("#tooltip") // reparou que tem uma div escondida no html?
+             .style("left", (d3.event.pageX - 500) + "px")
+             .style("top", d3.event.pageY + "px")
+             .select("#value")
+             .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
+           // Mostra o tooltip
+           d3.select("#tooltip").classed("hidden", false);
+
+           console.log(d3.mouse(this)[1]);
          }
+    function mouseSaiu(d){
+           d3.select("#tooltip").classed("hidden", true);
+    }
+
+    function mouseClicou(d){
+      d3.select("#tooltip").classed("hidden", true);
+      alert('caralhooooooo')
+      d3.select("#tooltip2") // reparou que tem uma div escondida no html?
+        .style("left", (d3.event.pageX - 500) + "px")
+        .style("top", d3.event.pageY + "px")
+        .select("#value2")
+        .html('Total: ' + d.total_motorizados + '<br>' + 'Carros: ' + d.carros + '<br>' + 'Motos: ' + d.motos + '<br>'+ 'Ônibus: '+ d.onibus + '<br>' + 'Caminhões: ' + d.caminhoes);
+      // Mostra o tooltip
+      d3.select("#tooltip").classed("hidden", false);
+
+    }
+
+
+
     }
 
     d3.csv('https://raw.githubusercontent.com/thiagosantos18/intro-d3/master/dados/dados.csv', function(dados) {
@@ -241,6 +228,3 @@ draft: false
     });
 
   </script>
-</body>
-
-</html>
