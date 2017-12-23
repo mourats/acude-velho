@@ -27,7 +27,7 @@ Bob&#39;s Jackson Burrinhos   .carros { stroke: steelblue; stroke-width: 3; } .m
       <pubDate>Sat, 09 Dec 2017 21:03:53 -0300</pubDate>
       
       <guid>https://thiagosantos18.github.io/acude-velho/post/segunda-tarefa/</guid>
-      <description>Primeira Tarefa    Bob&#39;s  Jackson do Pandeiro  Burrinhos do açude   Legenda   .homem { fill: steelblue; } .mulher { fill: red; } .mychart text { font: 10px sans-serif; text-anchor: left; }  &#34;use strict&#34; function desenhaBolas(dados) { var dados_bobs = dados.filter((d) = d.local === &#34;bobs&#34;); var dados_jackson = dados.filter((d) = d.local === &#34;jackson&#34;); var dados_burrinhos = dados.filter((d) = d.local === &#34;burrinhos&#34;); // definicoes de altura e largura do svg e da vis dentro var alturaSVG = 400, larguraSVG = 400; var	margin = {top: 10, right: 10, bottom:10, left: 10}, // para descolar a vis das bordas do grafico larguraVis = larguraSVG - margin.</description>
+      <description>Primeira Tarefa   Bob&#39;s  Jackson do Pandeiro  Burrinhos do açude   Legenda   .homem { fill: steelblue; } .mulher { fill: red; } .mychart text { font: 10px sans-serif; text-anchor: left; } #tooltip { position: absolute; width: auto; height: auto; padding: 10px; background-color: white; border-radius: 10px; } #tooltip.hidden { display: none; } #tooltip p { margin: 0; font-family: sans-serif; font-size: 12px; line-height: 20px; }  &#34;</description>
     </item>
     
     <item>
@@ -37,7 +37,6 @@ Bob&#39;s Jackson Burrinhos   .carros { stroke: steelblue; stroke-width: 3; } .m
       
       <guid>https://thiagosantos18.github.io/acude-velho/post/primeira-tarefa/</guid>
       <description>Primeira TarefaBob&#39;sJackson do PandeiroBurrinhos do açude0
-0
 Passe o mouse nas barras e veja suas quantidades!.mychart rect {fill: steelblue;}.mychart rect:hover {fill: goldenrod;}.mychart text {font: 10px sans-serif;text-anchor: left;}#tooltip {position: absolute;width: auto;height: auto;padding: 10px;background-color: mediumturquoise;border-radius: 10px;}#tooltip.hidden {display: none;}#tooltip p {margin: 0;font-family: sans-serif;font-size: 12px;line-height: 20px;}&#34;</description>
     </item>
     
